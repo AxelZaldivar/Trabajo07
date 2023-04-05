@@ -1,0 +1,34 @@
+<!--HTML que despliega a los heroes-->
+
+<!--Crea la lista de heroes-->
+<div class="fondo">
+  <h2 class="subtitulo">My Heroes</h2>
+  <button (click)="ordenar()">Ordenar por puntos</button>
+  <ul class="heroes">
+    <li *ngFor="let hero of heroes">
+      <a routerLink="/detail/{{hero.id}}">
+        <span class="badge">id: {{hero.id}}</span>
+        <span class="badge2">p: {{hero.puntos}}</span>
+        {{hero.name}}
+      </a>
+      <button class="delete" title="delete hero" (click)="delete(hero)">x</button>
+    </li>
+  </ul>
+</div>
+
+<!--Agregar un nuevo heroe-->
+  <div class="agregar">
+    <h2>Agregar un heroe</h2>
+    <label>Nombre del heroe:
+      <input #heroName />
+    </label>
+    <br>
+    <label>Puntos del heroe:
+      <input #heroPoint />
+    </label>
+    <br>
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button class="add" (click)="add(heroName.value, +heroPoint.value); heroName.value=''; heroPoint.value=''">
+      Añadir
+    </button>
+  </div>
